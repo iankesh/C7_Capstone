@@ -28,6 +28,6 @@ resource "aws_subnet" "private" {
     Unique_Key                      = var.unique_key
     Course_Assignment               = var.course_assignment
     "kubernetes.io/cluster/my-eks-201" = "shared"
-    "kubernetes.io/role/elb"        = "1"
+    "kubernetes.io/role/internal-elb"        = "1"
   }
 }
