@@ -1,5 +1,6 @@
 ---
-apiVersion: autoscaling/v1
+#Creates the horizontal Pod Autoscalar to help in handling more load and create multiple pods if required to tackle the load
+apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   name: upg-loadme
@@ -13,4 +14,10 @@ spec:
     name: upg-loadme
   minReplicas: 1
   maxReplicas: 5
-  targetCPUUtilizationPercentage: 50
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
